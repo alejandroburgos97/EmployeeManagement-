@@ -43,19 +43,19 @@
 
                     <p:outputLabel value="#{msg['empleado.documentNumber']}" for="precio" class="col-form-label"/>
                     <h:panelGroup>
-                        <p:inputText id="precio" value="#{empleado.documentoNumero}" label="Precio" class="form-control"/>
+                        <p:inputText id="precio" value="#{empleado.documentoNumero}" label="Precio" class="form-control" required="true" />
                         <p:message for="precio" style="color:red;"/>
                     </h:panelGroup>
 
-                    <p:outputLabel value="#{msg['empleado.names']}" for="sku" class="col-form-label"/>
+                    <p:outputLabel value="#{msg['empleado.names']}" for="names" class="col-form-label"/>
                     <h:panelGroup>
-                        <p:inputText id="sku" value="#{empleado.nombres}" label="Sku" class="form-control"/>
-                        <p:message for="sku" style="color:red;"/>
+                        <p:inputText id="names" value="#{empleado.nombres}" label="Sku" class="form-control" required="true" />
+                        <p:message for="names" style="color:red;"/>
                     </h:panelGroup>
 
                     <p:outputLabel value="#{msg['empleado.surnane']}" for="apellidos" class="col-form-label"/>
                     <h:panelGroup>
-                        <p:inputText id="apellidos" value="#{empleado.apellidos}" label="apellidos" class="form-control"/>
+                        <p:inputText id="apellidos" value="#{empleado.apellidos}" label="apellidos" class="form-control" required="true" />
                         <p:message for="apellidos" style="color:red;"/>
                     </h:panelGroup>
 

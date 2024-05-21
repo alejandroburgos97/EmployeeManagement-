@@ -24,13 +24,17 @@
             }
             .content-wrapper {
                 flex: 1;
+                background-color: var(--surface-b);
+                padding: 1em;
             }
 
             footer {
-                background-color: #f3f3f3;
                 padding: 10px 0;
                 text-align: center;
+                background-color: var(--surface-b);
+                color: var(--text-color);
             }
+
         </style>
     </h:head>
     <h:body>
@@ -49,7 +53,7 @@
         </h:form>
 
 
-        <div class="content-wrapper">
+        <div class="content-wrapper card">
             <p:card style="margin: 0 auto; width: 90%;" >
                 <p:messages globalOnly="true" closable="true" />
                 <ui:insert name="content"/>

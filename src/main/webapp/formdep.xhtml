@@ -32,13 +32,13 @@
 
                     <p:outputLabel value="#{msg['departamento.code']}" for="nombre" class="col-form-label"/>
                     <h:panelGroup>
-                        <p:inputText id="nombre" value="#{departamento.departamentoCodigo}" label="Nombre" class="form-control"/>
+                        <p:inputText id="nombre" value="#{departamento.departamentoCodigo}" label="Nombre" class="form-control" required="true"/>
                         <p:message for="nombre" style="color:red;"/>
                     </h:panelGroup>
 
                     <p:outputLabel value="#{msg['departamento.name']}" for="precio" class="col-form-label"/>
                     <h:panelGroup>
-                        <p:inputText id="precio" value="#{departamento.departamentoNombre}" label="Precio" class="form-control"/>
+                        <p:inputText id="precio" value="#{departamento.departamentoNombre}" label="Precio" class="form-control" required="true"/>
                         <p:message for="precio" style="color:red;"/>
                     </h:panelGroup>
 

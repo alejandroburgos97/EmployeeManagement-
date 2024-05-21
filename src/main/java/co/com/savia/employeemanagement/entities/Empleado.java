@@ -23,12 +23,16 @@ public class Empleado {
 
     @NotNull
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private DocumentoTipo documentoTipo;
 
+    @Column(nullable = false)
     private String documentoNumero;
 
+    @Column(nullable = false)
     private String nombres;
 
+    @Column(nullable = false)
     private String apellidos;
 
     @Column(nullable = false, updatable = false)
