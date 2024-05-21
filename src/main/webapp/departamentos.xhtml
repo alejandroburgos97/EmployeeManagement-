@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/layouts/main.xhtml">
+
+    <ui:define name="content">
+
+        <p:panelGrid columns="1" style="margin: 0 auto; width: 100%;">
+
+            <h:form id="crearForm">
+                <p:commandButton value="#{msg['departamento.nuevo']}" action="formdep.xhtml" class="p-my-2"/>
+            </h:form>
+            <h:outputText value="#{msg['departamento.text.noexist']}" rendered="#{empty listadoDepartamentos}"
+                          class="alert alert-warning"/>
+            <p:dataTable value="#{listadoDepartamentos}" var="dep" rendered="#{not empty listadoDepartamentos}">
+                
+                <p:column headerText="#{msg['departamento.id']}">
+                    <h:outputText value="#{dep.id}"/>
+                </p:column>
+                <p:column headerText="#{msg['departamento.code']}">
+                    <h:outputText value="#{dep.departamentoCodigo}"/>
+                </p:column>
+                <p:column headerText="#{msg['departamento.name']}">
+                    <h:outputText value="#{dep.departamentoNombre}"/>
+                </p:column>
+                <p:column headerText="#{msg['departamento.creationDate']}">
+                    <h:outputText value="#{dep.fechaHoraCrea}" converter="dateTimeConverter"/>
+                </p:column>
+                <p:column headerText="#{msg['departamento.modificationDate']}">
+                    <h:outputText value="#{dep.fechaHoraModifica}" converter="dateTimeConverter"/>
+                </p:column>
+                
+
+                <p:column headerText="#{msg['boton.editar']}">
+                    <h:form id="editarForm">
+                        <p:commandButton value="#{msg['boton.editar']}" action="#{departamentoController.edit(dep.id)}"
+                                       class="ui-button-success"/>
+                    </h:form>
+                </p:column>
+                <p:column headerText="#{msg['boton.eliminar']}">
+                    <h:form id="eliminarForm">
+                        <p:commandButton value="#{msg['boton.eliminar']}" action="#{departamentoController.delete(dep)}"
+                                       class="ui-button-danger"
+                                       onclick="return confirm('esta seguro que desea eliminar?')"/>
+                    </h:form>
+                </p:column>
+            </p:dataTable>
+        </p:panelGrid>
+    </ui:define>
+</ui:composition>

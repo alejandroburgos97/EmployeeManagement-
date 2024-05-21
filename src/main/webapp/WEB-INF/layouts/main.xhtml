@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="#{lenguajeController.locale}">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        locale="#{lenguajeController.locale}">
+
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>#{titulo}</title>
+        <ui:insert name="head"/>
+        <style>
+
+            html, body {
+                height: 100%;
+                margin: 0;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+            .content-wrapper {
+                flex: 1;
+            }
+
+            footer {
+                background-color: #f3f3f3;
+                padding: 10px 0;
+                text-align: center;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+        <p:menubar styleClass="custom-menubar">
+            <p:menuitem value="#{msg['navbar.text.departamentos']}" outcome="departamentos" icon="pi pi-fw pi-home"/>
+            <p:menuitem value="#{msg['navbar.text.empleados']}" outcome="index" icon="pi pi-fw pi-user"/>
+
+            <p:menuitem styleClass="language-menu" icon="pi pi-fw pi-flag">
+                <p:selectOneMenu value="#{lenguajeController.lenguaje}" valueChangeListener="#{lenguajeController.seleccionar}" onchange="submit()">
+                    <f:selectItem itemLabel="#{msg['navbar.text.cambiar.lenguaje']}" itemValue="es" />
+                    <f:selectItems value="#{lenguajeController.lenguajesSoportados}" />
+                </p:selectOneMenu>
+            </p:menuitem>
+        </p:menubar>
+        </h:form>
+
+
+        <div class="content-wrapper">
+            <p:card style="margin: 0 auto; width: 90%;" >
+                <p:messages globalOnly="true" closable="true" />
+                <ui:insert name="content"/>
+            </p:card>
+        </div>
+        <footer style="clear: both;">
+            <p>
+                <h:outputText value="#{msg['footer.text.autor']}" />
+            </p>
+            <ui:insert name="js"/>
+        </footer>
+    </h:body>
+</f:view>
+</html>

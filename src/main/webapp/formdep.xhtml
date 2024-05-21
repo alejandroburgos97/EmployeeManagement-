@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/layouts/main.xhtml">
+
+    <ui:define name="content">
+
+        <f:metadata>
+            <f:viewParam name="id" value="#{departamentoController.id}"/>
+        </f:metadata>
+
+
+        <p:panelGrid columns="1" style="margin: 0 auto; width: 75%;">
+            <f:facet name="header">
+                <h:outputText value="#{departamento.id > 0 ? msg['boton.editar'] : msg['boton.crear']} #{msg['departamento.text']}"/>
+            </f:facet>
+            <p:linkButton outcome="departamentos" value="#{msg['boton.volver']}" class="p-my-2"/>
+            <h:form>
+                <p:panelGrid columns="2" style="margin: 0 auto; width: 75%;">
+                    <h:panelGroup rendered="#{departamento.id > 0}">
+                        <p:outputLabel value="#{msg['departamento.id']}" for="departamentoID" class="col-form-label" rendered="#{departamento.id > 0}"/>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{departamento.id > 0}">
+                        <h:panelGroup rendered="#{departamento.id > 0}">
+                            <p:inputText id="departamentoID" value="#{departamento.id}" label="departamentoID" class="form-control" disabled="true"/>
+                            <p:message for="departamentoID" style="color:red;"/>
+                        </h:panelGroup>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['departamento.code']}" for="nombre" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:inputText id="nombre" value="#{departamento.departamentoCodigo}" label="Nombre" class="form-control"/>
+                        <p:message for="nombre" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['departamento.name']}" for="precio" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:inputText id="precio" value="#{departamento.departamentoNombre}" label="Precio" class="form-control"/>
+                        <p:message for="precio" style="color:red;"/>
+                    </h:panelGroup>
+
+
+                    <p:outputLabel value="#{msg['departamento.creationDate']}" for="creationDate" class="col-form-label" rendered="#{departamento.id > 0}"/>
+                    <h:panelGroup rendered="#{departamento.id > 0}">
+                        <h:panelGroup rendered="#{departamento.id > 0}">
+                            <p:inputText id="creationDate" value="#{departamento.fechaHoraCrea}" label="creationDate" class="form-control" disabled="true" converter="dateTimeConverter"/>
+                            <p:message for="creationDate" style="color:red;"/>
+                        </h:panelGroup>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['departamento.modificationDate']}" for="modificationDate" class="col-form-label" rendered="#{departamento.id > 0}"/>
+                    <h:panelGroup rendered="#{departamento.id > 0}">
+                        <h:panelGroup rendered="#{departamento.id > 0}">
+                            <p:inputText id="modificationDate" value="#{departamento.fechaHoraModifica}" label="modificationDate" class="form-control" disabled="true" converter="dateTimeConverter"/>
+                            <p:message for="modificationDate" style="color:red;"/>
+                        </h:panelGroup>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <p:commandButton value="#{departamento.id > 0 ? msg['boton.editar'] : msg['boton.crear']}" action="#{departamentoController.save}"
+                                         class="ui-button-outlined ui-button-success" ajax="false"/>
+                        <h:inputHidden value="#{departamento.id}"/>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <p>&#160;</p>
+                    </h:panelGroup>
+                </p:panelGrid>
+            </h:form>
+        </p:panelGrid>
+    </ui:define>
+</ui:composition>

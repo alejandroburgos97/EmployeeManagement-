@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/layouts/main.xhtml">
+
+    <ui:define name="content">
+
+        <f:metadata>
+            <f:viewParam name="id" value="#{empleadoController.id}"/>
+        </f:metadata>
+
+        <p:panelGrid columns="1" style="margin: 0 auto; width: 75%;">
+            <f:facet name="header">
+                <h:outputText value="#{empleado.id > 0 ? msg['boton.editar'] : msg['boton.crear']} #{msg['empleado.text']}"/>
+            </f:facet>
+            <p:linkButton outcome="index" value="#{msg['boton.volver']}" class="p-my-2"/>
+            <h:form>
+                <p:panelGrid columns="2" style="margin: 0 auto; width: 75%;">
+                    <h:panelGroup rendered="#{empleado.id > 0}">
+                        <p:outputLabel value="#{msg['empleado.id']}" for="empleadoID" class="col-form-label" rendered="#{empleado.id > 0}"/>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{empleado.id > 0}">
+                        <h:panelGroup rendered="#{empleado.id > 0}">
+                            <p:inputText id="empleadoID" value="#{empleado.id}" label="empleadoID" class="form-control" disabled="true"/>
+                            <p:message for="empleadoID" style="color:red;"/>
+                        </h:panelGroup>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.documentType']}" for="documentoTipo" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:selectOneMenu id="documentoTipo" value="#{empleado.documentoTipo}" class="form-select">
+                            <f:selectItem itemLabel="#{msg['select.documentType']}" itemValue="#{null}"/>
+                            <f:selectItem itemLabel="RC" itemValue="RC"/>
+                            <f:selectItem itemLabel="TI" itemValue="TI"/>
+                            <f:selectItem itemLabel="CC" itemValue="CC"/>
+                            <f:selectItem itemLabel="CE" itemValue="CE"/>
+                        </p:selectOneMenu>
+                        <p:message for="documentoTipo" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.documentNumber']}" for="precio" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:inputText id="precio" value="#{empleado.documentoNumero}" label="Precio" class="form-control"/>
+                        <p:message for="precio" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.names']}" for="sku" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:inputText id="sku" value="#{empleado.nombres}" label="Sku" class="form-control"/>
+                        <p:message for="sku" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.surnane']}" for="apellidos" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:inputText id="apellidos" value="#{empleado.apellidos}" label="apellidos" class="form-control"/>
+                        <p:message for="apellidos" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.creationDate']}" for="creationDate" class="col-form-label" rendered="#{empleado.id > 0}"/>
+                    <h:panelGroup rendered="#{empleado.id > 0}">
+                        <p:inputText id="creationDate" value="#{empleado.fechaHoraCrea}" label="creationDate" class="form-control" disabled="true" converter="dateTimeConverter"/>
+                        <p:message for="creationDate" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.modificationDate']}" for="modificationDate" class="col-form-label" rendered="#{empleado.id > 0}"/>
+                    <h:panelGroup rendered="#{empleado.id > 0}">
+                        <p:inputText id="modificationDate" value="#{empleado.fechaHoraModifica}" label="modificationDate" class="form-control" disabled="true" converter="dateTimeConverter"/>
+                        <p:message for="modificationDate" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.city']}" for="city" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:inputText id="city" value="#{empleado.ciudad}" label="city" class="form-control"/>
+                        <p:message for="city" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.address']}" for="address" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:inputText id="address" value="#{empleado.direccion}" label="address" class="form-control"/>
+                        <p:message for="address" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.email']}" for="email" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:inputText id="email" value="#{empleado.correoElectronico}" label="email" class="form-control"/>
+                        <p:message for="email" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['empleado.phone']}" for="phone" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:inputText id="phone" value="#{empleado.telefono}" label="phone" class="form-control"/>
+                        <p:message for="phone" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="#{msg['departamento.text']}" for="departamentoId" class="col-form-label"/>
+                    <h:panelGroup>
+                        <p:selectOneMenu id="departamentoId" value="#{empleado.departamento}" class="form-select">
+                            <f:selectItem  itemLabel="#{msg['select.department']}" itemValue="#{null}"/>
+                            <f:selectItems value="#{listadoDepartamentos}" var="dep" itemLabel="#{dep.departamentoNombre}"/>
+                            <f:converter binding="#{departamentoConverter}"/>
+                        </p:selectOneMenu>
+                        <p:message for="departamentoId" style="color:red;"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <p:commandButton value="#{empleado.id > 0 ? msg['boton.editar'] : msg['boton.crear']}" action="#{empleadoController.save}"
+                                         class="ui-button-outlined ui-button-success" ajax="false"/>
+                        <h:inputHidden value="#{empleado.id}"/>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <p>&#160;</p>
+                    </h:panelGroup>
+                </p:panelGrid>
+            </h:form>
+        </p:panelGrid>
+    </ui:define>
+</ui:composition>
