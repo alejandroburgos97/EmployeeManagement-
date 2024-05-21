@@ -1,10 +1,8 @@
 package co.com.savia.employeemanagement.controllers;
 
 import co.com.savia.employeemanagement.config.CustomFacesContext;
-import co.com.savia.employeemanagement.entities.Departamento;
 import co.com.savia.employeemanagement.entities.DocumentoTipo;
 import co.com.savia.employeemanagement.entities.Empleado;
-import co.com.savia.employeemanagement.services.DepartamentoService;
 import co.com.savia.employeemanagement.services.EmpleadoService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.inject.Model;

@@ -1,6 +1,5 @@
 package co.com.savia.employeemanagement.services.impl;
 
-import co.com.savia.employeemanagement.entities.Departamento;
 import co.com.savia.employeemanagement.entities.Empleado;
 import co.com.savia.employeemanagement.repositories.CrudRepository;
 import co.com.savia.employeemanagement.services.EmpleadoService;

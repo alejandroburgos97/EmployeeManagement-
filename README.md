@@ -4,7 +4,7 @@ Este proyecto es una aplicación web para administrar empleados y departamentos.
 
 * **WebServer:** WildFly
 * **Java:** 17 o superior
-* **Interfaz gráfica:** JSF y PrimeFaces (versión 11 o superior)
+* **Interfaz gráfica:** JSF y PrimeFaces (versión 11)
 * **Base de datos en memoria:** H2
 * **Persistencia:** Hibernate/JPA 
 * **Gestión de dependencias:** Maven
@@ -12,9 +12,9 @@ Este proyecto es una aplicación web para administrar empleados y departamentos.
 El modelo de dominio consta de departamentos y empleados. Cada departamento puede tener muchos empleados y un empleado puede pertenecer a un solo departamento.
 
 ## Requisitos
-Java 17 o superior
-Apache Maven
-WildFly Application Server
+* Java 17 o superior
+* Apache Maven
+* WildFly Application Server
 
 ## Instalación y Configuración
 ### 1. Descargar e instalar WildFly

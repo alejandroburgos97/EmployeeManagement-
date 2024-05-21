@@ -6,7 +6,6 @@ import co.com.savia.employeemanagement.services.DepartamentoService;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;

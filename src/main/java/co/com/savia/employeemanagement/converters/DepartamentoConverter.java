@@ -6,7 +6,6 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
-import jakarta.faces.convert.FacesConverter;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
